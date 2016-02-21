@@ -19,6 +19,10 @@
       border-radius: 5px;
       animation-name: onitemAdd;
       animation-duration: 0.5s;
+      opacity: 1;
+      transition: all;
+      transition-duration: 0.5s;
+
 
       .checkbox_and_description_container{
         flex-grow: 1;
@@ -26,9 +30,30 @@
         padding: 10px;
 
         .todo_description{
-          padding-left:10px;
+          padding:0 5px;
           vertical-align: middle;
           font-size: 22px;
+          position: relative;
+
+          .strike{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background-color: #333;
+            transition:all;
+            transition-duration:0.5s;
+          }
+        }
+
+      }
+
+      &.is_done{
+        opacity: 0.7;
+
+        .checkbox_and_description_container .todo_description .strike{
+          width: 100%;
         }
 
       }

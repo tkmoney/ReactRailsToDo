@@ -36,7 +36,7 @@ var TodoApp = React.createClass({
         <TodoStatus todos={this.state.todos} />
         <TodoList todos={this.state.todos} />
         <div className="add_item">
-          <input type="text" ref="newTodoDescription" maxLength="100" onKeyPress={this.onDescriptionKeyPress} />
+          <input type="text" ref="newTodoDescription" maxLength="100" placeholder="enter a new task" onKeyPress={this.onDescriptionKeyPress} />
           <button onClick={this.addItem}>add todo</button>
         </div>
       </div>

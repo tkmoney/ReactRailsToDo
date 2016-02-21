@@ -11,10 +11,13 @@ var Todo = React.createClass({
     ToDoAction.delete(this.props.id);
   },
   render: function() {
+    var isDone = this.props.done;
+    var classname = ('todo ' + (isDone ? 'is_done' : ''));
+
     return (
-      <div className="todo">
+      <div className={classname}>
         <div onClick={this.onDoneCheckBoxClick} className="checkbox_and_description_container">
-          <label style={{pointerEvents: 'none'}}><input type="checkbox" checked={this.props.done} readOnly={true} /><span className="todo_description">{this.props.description}</span></label>
+          <label style={{pointerEvents: 'none'}}><input type="checkbox" checked={isDone} readOnly={true} /><span className="todo_description"><span className="strike" />{this.props.description}</span></label>
         </div>
         <div className="delete_container">
           <button onClick={this.onDeleteClick}>delete</button>
