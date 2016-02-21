@@ -1,0 +1,64 @@
+// Place all the styles related to the todos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.todo_app{
+  .todo_list{
+    display: flex;
+    flex-direction: column;
+    -ms-user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    user-select:none;
+
+    .todo{
+      display: flex;
+      background-color: #FBFBFB;
+      margin: 2px;
+      border-radius: 5px;
+      animation-name: onitemAdd;
+      animation-duration: 0.5s;
+
+      .checkbox_and_description_container{
+        flex-grow: 1;
+        cursor: pointer;
+        padding: 10px;
+
+        .todo_description{
+          padding-left:10px;
+          vertical-align: middle;
+          font-size: 22px;
+        }
+
+      }
+
+      .delete_container{
+        text-align: right;
+        display: flex;
+        align-items: center;
+      }
+
+    }
+  }
+
+  .add_item{
+    input, button{
+      font-size: 22px;
+      vertical-align: middle;
+    }
+  }
+
+  button{
+    cursor: pointer;
+  }
+}
+
+@keyframes onitemAdd{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
