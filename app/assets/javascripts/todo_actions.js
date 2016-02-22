@@ -71,13 +71,13 @@ ToDoAction = {
 };
 
 window.addEventListener('keydown', function (e) {
-  if(e.key === 'Shift'){
+  if(e.key === 'Shift' || e.keyIdentifier === 'Shift'){
     ToDoAction.shiftIsDown = true;
   }
 })
 
 window.addEventListener('keyup', function (e) {
-  if(e.key === 'Shift'){
+  if(e.key === 'Shift' || e.keyIdentifier === 'Shift'){
     ToDoAction.shiftIsDown = false;
     ToDoAction.itemSelectionRange = [];
   }
