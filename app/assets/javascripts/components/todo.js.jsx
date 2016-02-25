@@ -20,7 +20,7 @@ var Todo = React.createClass({
           <label style={{pointerEvents: 'none'}}><input type="checkbox" checked={isDone} readOnly={true} /><span className="todo_description"><span className="strike" />{this.props.description}</span></label>
         </div>
         <div className="delete_container">
-          <button onClick={this.onDeleteClick}>delete</button>
+          <TodoDeleteButton onDeleteConfirm={this.onDeleteClick} />
         </div>
       </div>
     );

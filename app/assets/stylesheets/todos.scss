@@ -28,6 +28,13 @@
         flex-grow: 1;
         cursor: pointer;
         padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+
+        input{
+          vertical-align: middle;
+        }
 
         .todo_description{
           padding:0 5px;
@@ -77,6 +84,77 @@
   button{
     cursor: pointer;
   }
+}
+
+
+.tweet_status{
+  a{
+    display: inline-block;
+    text-decoration: none;
+    color:#fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #333;
+    background-color:#00ADEF;
+    padding: 10px;
+    margin: 10px;
+  }
+}
+
+.todo_delete_button{
+  width:8vw;
+  height:17vh;
+  position: relative;
+  perspective: 750px;
+
+  > div{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition-property:all;
+    transition-duration:0.5s;
+    display: flex;
+    text-align: center;
+    align-items:center;
+    border-radius: 5px;
+
+    > span{
+      margin:0 auto;
+    }
+  }
+
+  div.front{
+    background:red;
+    transform: rotateY(0deg);
+    cursor: pointer;
+  }
+
+  div.back{
+    background:repeating-linear-gradient(45deg, yellow, yellow 10px, black 10px, black 20px);
+    transform: rotateY(180deg);
+
+    > div{
+      margin: 0 auto;
+      background: rgba(255,255,255, 0.92);
+      padding: 5px;
+      border-radius: 2px;
+    }
+  }
+
+
+  &.show_back{
+    div.front{
+      transform: rotateY(-180deg);
+    }
+    div.back{
+      transform: rotateY(0deg);
+    }
+  }
+
 }
 
 @keyframes onitemAdd{

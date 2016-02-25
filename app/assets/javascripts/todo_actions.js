@@ -4,9 +4,11 @@ ToDoAction = {
   itemSelectionRange: [],
 
   onItemClick: function (id) {
+
+
     if(this.shiftIsDown){
       if(this.itemSelectionRange.length > 2){
-        this.itemSelectionRange = [];
+        this.clearItemSelectionRange();
       };
       this.itemSelectionRange.push(id);
 
@@ -14,19 +16,25 @@ ToDoAction = {
         var items = DataStore.getItemsBetween(this.itemSelectionRange[0], this.itemSelectionRange[1]);
         for(var i = 0; i < items.length; i++){
           var itm = items[i];
+          if(itm.id === this.itemSelectionRange[0]){continue;}
           itm.done = !(itm.done);
           this.update(itm.id, itm);
         }
-
-        this.itemSelectionRange = [];
+        this.clearItemSelectionRange();
+        this.itemSelectionRange.push(id);
       }
+
     }else{// !this.shiftIsDown
+      this.clearItemSelectionRange();
+      this.itemSelectionRange.push(id);
       var itm = DataStore.getItemById(id);
       itm.done = !(itm.done);
       this.update(id, itm);
     }
   },
-
+  clearItemSelectionRange: function(){
+    this.itemSelectionRange = [];
+  },
   add: function(data){
     XhrService.add({description: data.description}).then(function (xhr, response) {
       AppDispatcher.dispatch({
@@ -38,6 +46,7 @@ ToDoAction = {
     });
   },
   delete: function (id) {
+    this.clearItemSelectionRange(); //deleting an item changes the index
     XhrService.deleteById(id).then(function (xhr, response) {
       AppDispatcher.dispatch({
         eventName:'delete-todo',
@@ -79,6 +88,5 @@ window.addEventListener('keydown', function (e) {
 window.addEventListener('keyup', function (e) {
   if(e.key === 'Shift' || e.keyIdentifier === 'Shift'){
     ToDoAction.shiftIsDown = false;
-    ToDoAction.itemSelectionRange = [];
   }
 })
