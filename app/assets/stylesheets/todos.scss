@@ -102,7 +102,9 @@
 
 .todo_delete_button{
   width:8vw;
+  min-width:120px;
   height:17vh;
+  max-height: 70px;
   position: relative;
   perspective: 750px;
 
